@@ -1,0 +1,106 @@
+
+#img{
+    margin-top:30%;
+    border-radius:7%;
+}
+
+#exitButton{
+    background:transparent;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:2px;
+    padding-left:2px;
+    margin:0px;
+    color:qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 white, stop:1 white);
+    border:1px solid qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 gray, stop:1 gray);
+    margin-left:720px;
+    margin-right:10px;
+}
+#exitButton:hover{
+    background:gray;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:0px;
+    padding-left:0px;
+    color:black;
+    border:black;
+    margin-left:720px;
+    margin-right:10px;
+}
+
+QPushButton{
+    color: white;
+    border-radius: 7%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width:115px;
+    border:transparent;
+    margin:0px;
+    background:qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #50c3dc, stop:1 purple);
+    margin-right:50px;
+}
+QPushButton:hover {
+    background-color: transparent;
+    color:qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #50c3dc, stop:1 purple);
+    text-transform:uppercase;
+    border:2px solid qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #004584, stop:1 purple);
+}
+
+
+QComboBox {
+    color:white;
+    border-radius: 7%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left:15px;
+    border:2px solid qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #004584, stop:1 purple);
+    margin-top:0px;
+    background:transparent;
+    margin-right:50px;
+}
+QComboBox:hover {
+    background-color: transparent;
+    color:qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #50c3dc, stop:1 purple);
+    border:2px solid qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #004584, stop:1 purple);
+}
+
+QTextEdit{
+    color:white;
+    padding:20%;
+    margin-top:30%;
+    margin-bottom:20%;
+    margin-right:40px;
+    margin-left:70px;
+    border-radius:10%;
+    background:transparent;
+    border:1px solid qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #004584, stop:1 purple);
+    opacity:10%;
+    margin-bottom:30%;
+}
+QTextEdit:hover{
+    background:rgba(10, 10, 10, 128);
+    border:1px solid qlineargradient(x1:0, y1:0, x2:0.9, y2:0.2, stop:0 #004584, stop:1 purple);
+    background-position: center center;
+}
+
+EncryptionApp{
+    background:qlineargradient(x1:0, y1:0, x2:0.35, y2:0.2, stop:0 purple, stop:1 black);
+    border-radius:20px;
+}
+
+
+QLineEdit {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+
+#name{
+    color:qlineargradient(x1:0, y1:0, x2:0.1, y2:0.1, stop:0 white, stop:1 white);
+    margin-bottom:10%;
+    text-transform:uppercase;
+    margin-right:320px;
+    margin-left:320px;
+}
