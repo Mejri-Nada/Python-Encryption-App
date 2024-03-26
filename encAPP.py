@@ -1,3 +1,7 @@
+from PyQt5.QtCore import QTimer, QObject, pyqtSignal
+from PyQt5.QtWidgets import QSplashScreen, QApplication
+from PyQt5.QtGui import QPixmap 
+#############################################
 from PyQt5 import QtCore;
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QTextEdit, QFileDialog, QComboBox, QInputDialog, QLineEdit
 from cryptography.hazmat.backends import default_backend
@@ -219,7 +223,7 @@ class EncryptionApp(QWidget):
                 content = file.read()
                 self.text_edit.setPlainText(content)
 
-if __name__ == '__main__':
+"""if __name__ == '__main__':
     app = QApplication([])
     window = EncryptionApp()
     with open('styles.qss', 'r') as file:
@@ -227,4 +231,66 @@ if __name__ == '__main__':
         app.setStyleSheet(style)
     
     window.show()
+    app.exec_()"""
+
+
+    
+
+if __name__ == '__main__':
+    app = QApplication([])
+    window = EncryptionApp()
+    with open('styles.qss', 'r') as file:
+        style = file.read()
+        app.setStyleSheet(style)
+    # Show splash screen
+    pixmap = QPixmap("splash_image.png")  # Replace "splash_image.png" with your splash screen image path
+    splash = QSplashScreen(pixmap)
+    splash.show()
+    window.show()
+    # Close the splash screen after a delay
+    QTimer.singleShot(2000, splash.close)  # Adjust the delay as needed (2000 milliseconds = 2 seconds)
+
+    # Start the application event loop
     app.exec_()
+
+
+
+
+
+
+
+
+"""
+
+
+def show_main_window():
+    app = QApplication([])
+    # Create the main window
+    window = EncryptionApp()
+    window.show()
+
+
+def main():
+    # Load styles from external file
+    with open('styles.qss', 'r') as file:
+        style = file.read()
+        app.setStyleSheet(style)
+
+    # Close the splash screen and show the main window
+    splash.finish(None)  # Close the splash screen
+    show_main_window()   # Show the main window
+
+if __name__ == '__main__':
+    app = QApplication([])
+
+    # Show splash screen
+    pixmap = QPixmap("splash_image.png")  # Replace "splash_image.png" with your splash screen image path
+    splash = QSplashScreen(pixmap)
+    splash.show()
+
+    # Call the main function after a short delay
+    QTimer.singleShot(2000, main)
+
+    app.exec_()
+    """
+
