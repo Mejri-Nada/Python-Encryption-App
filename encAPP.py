@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QTimer, QObject, pyqtSignal
-from PyQt5.QtWidgets import QSplashScreen, QApplication
+from PyQt5.QtWidgets import QSplashScreen, QApplication, QProgressBar
 from PyQt5.QtGui import QPixmap 
 #############################################
 from PyQt5 import QtCore;
@@ -223,7 +223,9 @@ class EncryptionApp(QWidget):
                 content = file.read()
                 self.text_edit.setPlainText(content)
 
-"""if __name__ == '__main__':
+"""
+#no splash screen
+if __name__ == '__main__':
     app = QApplication([])
     window = EncryptionApp()
     with open('styles.qss', 'r') as file:
@@ -233,64 +235,66 @@ class EncryptionApp(QWidget):
     window.show()
     app.exec_()"""
 
-
     
-
+"""
 if __name__ == '__main__':
     app = QApplication([])
     window = EncryptionApp()
     with open('styles.qss', 'r') as file:
         style = file.read()
         app.setStyleSheet(style)
+          
     # Show splash screen
-    pixmap = QPixmap("splash_image.png")  # Replace "splash_image.png" with your splash screen image path
+    pixmap = QPixmap("logo4.jpg")  # Replace "logo4.jpg" with your splash screen image path
     splash = QSplashScreen(pixmap)
     splash.show()
+    QTimer.singleShot(3000, splash.close) # Adjust the delay as needed (3000 milliseconds = 3 seconds)
+
     window.show()
-    # Close the splash screen after a delay
-    QTimer.singleShot(2000, splash.close)  # Adjust the delay as needed (2000 milliseconds = 2 seconds)
+    app.exec_() #applicatation event loop"""
 
-    # Start the application event loop
-    app.exec_()
+import sys  
+class SplashScreen(QSplashScreen):
+    def __init__(self, pixmap):
+        super().__init__(pixmap)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
+        self.progressBar = QProgressBar(self)
+        self.progressBar.setGeometry(10, self.size().height() - 50, self.size().width() - 20, 20)
+        self.progressBar.setValue(0)
 
-
-
-
-
-
-
-
-"""
-
-
-def show_main_window():
-    app = QApplication([])
-    # Create the main window
-    window = EncryptionApp()
-    window.show()
-
+    def set_progress_value(self, value):
+        self.progressBar.setValue(value)
+        if value >= 100:
+            self.close()
 
 def main():
+    app = QApplication(sys.argv)
+
     # Load styles from external file
     with open('styles.qss', 'r') as file:
         style = file.read()
         app.setStyleSheet(style)
 
-    # Close the splash screen and show the main window
-    splash.finish(None)  # Close the splash screen
-    show_main_window()   # Show the main window
+    # Create the main window
+    window = EncryptionApp()
 
-if __name__ == '__main__':
-    app = QApplication([])
-
-    # Show splash screen
-    pixmap = QPixmap("splash_image.png")  # Replace "splash_image.png" with your splash screen image path
-    splash = QSplashScreen(pixmap)
+    # Create the splash screen with a custom image
+    pixmap = QPixmap("logo4.jpg")
+    splash = SplashScreen(pixmap)
     splash.show()
 
-    # Call the main function after a short delay
-    QTimer.singleShot(2000, main)
+    # Timer to update progress bar
+    timer = QTimer()
+    timer.timeout.connect(lambda: splash.set_progress_value(splash.progressBar.value() + 1))
+    timer.start(30)  # Adjust the update interval as needed
 
+    # Start the application event loop
+    window.show()
     app.exec_()
-    """
+
+if __name__ == '__main__':
+    main()
+
+
+
 
