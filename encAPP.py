@@ -50,7 +50,7 @@ class EncryptionApp(QWidget):
         
         # Add an image label
         # Load the image and scale it to the desired size
-        image = QPixmap('logo4.jpg')
+        image = QPixmap('logo4.png')
         image = image.scaledToWidth(image.width()//4)  # Resize by 50%
         
 
