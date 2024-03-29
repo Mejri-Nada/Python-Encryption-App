@@ -1,6 +1,8 @@
-from PyQt5.QtCore import QTimer, QObject, pyqtSignal
+from PyQt5.QtCore import QTimer, QPropertyAnimation
 from PyQt5.QtWidgets import QSplashScreen, QApplication, QProgressBar
 from PyQt5.QtGui import QPixmap 
+import sys  
+
 #############################################
 from PyQt5 import QtCore;
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QTextEdit, QFileDialog, QComboBox, QInputDialog, QLineEdit
@@ -236,7 +238,7 @@ if __name__ == '__main__':
     app.exec_()"""
 
     
-"""
+
 if __name__ == '__main__':
     app = QApplication([])
     window = EncryptionApp()
@@ -245,56 +247,22 @@ if __name__ == '__main__':
         app.setStyleSheet(style)
           
     # Show splash screen
-    pixmap = QPixmap("logo4.jpg")  # Replace "logo4.jpg" with your splash screen image path
-    splash = QSplashScreen(pixmap)
-    splash.show()
-    QTimer.singleShot(3000, splash.close) # Adjust the delay as needed (3000 milliseconds = 3 seconds)
-
-    window.show()
-    app.exec_() #applicatation event loop"""
-
-import sys  
-class SplashScreen(QSplashScreen):
-    def __init__(self, pixmap):
-        super().__init__(pixmap)
-        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
-        self.progressBar = QProgressBar(self)
-        self.progressBar.setGeometry(10, self.size().height() - 50, self.size().width() - 20, 20)
-        self.progressBar.setValue(0)
-
-    def set_progress_value(self, value):
-        self.progressBar.setValue(value)
-        if value >= 100:
-            self.close()
-
-def main():
-    app = QApplication(sys.argv)
-
-    # Load styles from external file
-    with open('styles.qss', 'r') as file:
-        style = file.read()
-        app.setStyleSheet(style)
-
-    # Create the main window
-    window = EncryptionApp()
-
-    # Create the splash screen with a custom image
     pixmap = QPixmap("logo4.jpg")
-    splash = SplashScreen(pixmap)
+    splash = QSplashScreen(pixmap, Qt.WindowStaysOnTopHint)
+    
+    # Fade-in animation
+    splash_opacity_anim = QPropertyAnimation(splash, b"windowOpacity")
+    splash_opacity_anim.setDuration(1000)  # Adjust the duration as needed
+    splash_opacity_anim.setStartValue(0.0)
+    splash_opacity_anim.setEndValue(1.0)
+    splash_opacity_anim.start()
+    
     splash.show()
+    
+    QTimer.singleShot(5000, splash.close)  # Adjust the delay as needed
 
-    # Timer to update progress bar
-    timer = QTimer()
-    timer.timeout.connect(lambda: splash.set_progress_value(splash.progressBar.value() + 1))
-    timer.start(30)  # Adjust the update interval as needed
-
-    # Start the application event loop
-    window.show()
-    app.exec_()
-
-if __name__ == '__main__':
-    main()
-
-
+    # Show main window after splash screen closes
+    QTimer.singleShot(5000, lambda: window.show())
+    app.exec_() #applicatation event loop
 
 
