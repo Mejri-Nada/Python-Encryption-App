@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{84A69EC0-1C4D-4F4D-BB55-55EEF94FD974}
+AppId={{C0BC0469-1DF3-43E7-B94A-86D988E6E0A9}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -26,7 +26,7 @@ ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputBaseFilename=SETUP
+OutputBaseFilename=MencAPP_SETUP
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -41,7 +41,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\Users\mejri\OneDrive\Bureau\NadaMejri-Projet-cryptographie\NadaMejri-Projet-cryptographie\Project\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\mejri\OneDrive\Bureau\NadaMejri-Projet-cryptographie\NadaMejri-Projet-cryptographie\Project\dist\logo4.jpg"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\mejri\OneDrive\Bureau\NadaMejri-Projet-cryptographie\NadaMejri-Projet-cryptographie\Project\dist\logo4.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\mejri\OneDrive\Bureau\NadaMejri-Projet-cryptographie\NadaMejri-Projet-cryptographie\Project\dist\splash_screen.py"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\mejri\OneDrive\Bureau\NadaMejri-Projet-cryptographie\NadaMejri-Projet-cryptographie\Project\dist\styles.qss"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
