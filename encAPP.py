@@ -41,13 +41,12 @@ class EncryptionApp(QWidget):
         self.init_ui()
 
     def init_ui(self):
+        self.setObjectName("MainWindow")  
 
         self.setWindowTitle('My Encryption App')
-
         self.setFixedSize(800, 500)
-
         self.text_edit = QTextEdit(self)
-
+        
         
         # Add an image label
         # Load the image and scale it to the desired size
@@ -105,11 +104,13 @@ class EncryptionApp(QWidget):
         hbox_main.addLayout(vbox_buttons)
         
         vbox_main = QVBoxLayout()
+        vbox_main.setObjectName('main')
         vbox_main.addWidget(exit_button)
         vbox_main.addWidget(image_label)
         vbox_main.addWidget(text_label)
         vbox_main.addLayout(hbox_main)
 
+        
         self.setLayout(vbox_main)
 
 
@@ -247,7 +248,7 @@ if __name__ == '__main__':
         app.setStyleSheet(style)
           
     # Show splash screen
-    pixmap = QPixmap("logo4.jpg")
+    pixmap = QPixmap("logo4.png")
     splash = QSplashScreen(pixmap, Qt.WindowStaysOnTopHint)
     
     # Fade-in animation
